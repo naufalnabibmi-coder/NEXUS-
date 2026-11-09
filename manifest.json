@@ -1,0 +1,47 @@
+{
+    "name": "NEXUS - Digital Experience",
+    "short_name": "NEXUS",
+    "description": "Platform digital generasi baru untuk berkreasi dan berkolaborasi",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#050508",
+    "theme_color": "#00f0ff",
+    "orientation": "portrait-primary",
+    "scope": "./",
+    "lang": "id",
+    "categories": ["productivity", "business"],
+    "icons": [
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMGYwZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZjAwZTUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjMyIiBmaWxsPSIjMDUwNTA4Ii8+PGNpcmNsZSBjeD0iOTYiIGN5PSI5NiIgcj0iNjAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSI5NiIgeT0iMTA4IiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0OCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iIzA1MDUwOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TjwvdGV4dD48L3N2Zz4=",
+            "sizes": "192x192",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMGYwZmYiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZjAwZTUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9Ijg1IiBmaWxsPSIjMDUwNTA4Ii8+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIxNjAiIGZpbGw9InVybCgjZykiLz48dGV4dCB4PSIyNTYiIHk9IjI5MCIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTI4IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMDUwNTA4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5OPC90ZXh0Pjwvc3ZnPg==",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Dashboard",
+            "short_name": "Dashboard",
+            "url": "dashboard.html",
+            "description": "Buka dashboard"
+        },
+        {
+            "name": "Projects",
+            "short_name": "Projects",
+            "url": "projects.html",
+            "description": "Lihat project"
+        },
+        {
+            "name": "Messages",
+            "short_name": "Messages",
+            "url": "messages.html",
+            "description": "Buka pesan"
+        }
+    ]
+}

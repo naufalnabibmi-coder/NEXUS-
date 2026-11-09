@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cara Membangun Website Modern - NEXUS Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <nav>
+        <a href="index.html" class="logo">NEXUS</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pricing.html">Harga</a></li>
+            <li><a href="about.html">Tentang</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="contact.html">Kontak</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+    </nav>
+
+    <article class="article-page">
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>›</span>
+            <a href="blog.html">Blog</a>
+            <span>›</span>
+            <span>Cara Membangun Website Modern</span>
+        </div>
+
+        <!-- HEADER -->
+        <header class="article-header">
+            <span class="blog-cat">TUTORIAL</span>
+            <h1>Cara Membangun Website Modern dengan HTML, CSS, dan JavaScript</h1>
+            <div class="article-meta">
+                <div class="author-avatar">A</div>
+                <div>
+                    <strong>Andi Pratama</strong>
+                    <div class="meta-line">📅 15 Nov 2024 · ⏱ 8 menit baca · 👁 1.2K views</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- HERO IMAGE -->
+        <div class="article-hero">🚀</div>
+
+        <!-- CONTENT -->
+        <div class="article-content">
+            <p class="lead">Membangun website modern di tahun 2024 bukan lagi hal yang sulit. Dengan HTML, CSS, dan JavaScript, Anda bisa membuat website yang tidak hanya indah tapi juga cepat dan interaktif. Artikel ini akan memandu Anda dari nol.</p>
+
+            <h2>1. Persiapan Awal</h2>
+            <p>Sebelum mulai, pastikan Anda memiliki:</p>
+            <ul>
+                <li>Text editor (VS Code direkomendasikan)</li>
+                <li>Browser modern (Chrome, Firefox, atau Edge)</li>
+                <li>Koneksi internet (untuk dokumentasi)</li>
+                <li>Semangat belajar! 💪</li>
+            </ul>
+
+            <h2>2. Struktur HTML yang Baik</h2>
+            <p>HTML adalah fondasi website. Gunakan tag semantic agar mudah dibaca oleh browser dan SEO-friendly:</p>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Website Saya&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;...&lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;section&gt;...&lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+            <h2>3. Styling dengan CSS Modern</h2>
+            <p>Gunakan CSS variables untuk konsistensi, dan grid/flexbox untuk layout:</p>
+
+            <pre><code>:root {
+    --primary: #00f0ff;
+    --bg: #050508;
+}
+
+body {
+    background: var(--bg);
+    color: white;
+}</code></pre>
+
+            <blockquote>💡 <strong>Tips:</strong> Selalu gunakan CSS variables untuk warna, ukuran, dan spacing agar mudah diubah.</blockquote>
+
+            <h2>4. Animasi & Interaksi</h2>
+            <p>Animasi membuat website terasa lebih hidup. Gunakan CSS transitions untuk efek sederhana, atau JavaScript untuk yang lebih kompleks:</p>
+
+            <pre><code>.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}</code></pre>
+
+            <h2>5. Optimasi Performa</h2>
+            <p>Website cepat = pengunjung senang. Beberapa tips optimasi:</p>
+            <ol>
+                <li>Compress gambar (pakai TinyPNG atau Squoosh)</li>
+                <li>Minify CSS & JS</li>
+                <li>Lazy load gambar</li>
+                <li>Gunakan CDN untuk library</li>
+                <li>Hindari library yang tidak perlu</li>
+            </ol>
+
+            <h2>6. Deploy ke Internet</h2>
+            <p>Setelah website jadi, saatnya online! Rekomendasi platform gratis:</p>
+            <ul>
+                <li><strong>Netlify</strong> — drag & drop, langsung jadi</li>
+                <li><strong>Vercel</strong> — untuk project Node.js</li>
+                <li><strong>GitHub Pages</strong> — gratis selamanya</li>
+                <li><strong>Cloudflare Pages</strong> — CDN global</li>
+            </ul>
+
+            <h2>Kesimpulan</h2>
+            <p>Membangun website modern tidak butuh tools mahal. Yang penting adalah pemahaman dasar HTML/CSS/JS, konsisten latihan, dan kemauan untuk belajar hal baru. Mulai dari project kecil dulu, lalu tingkatkan kompleksitasnya.</p>
+
+            <p>Selamat berkarya! 🚀</p>
+        </div>
+
+        <!-- SHARE -->
+        <div class="article-share">
+            <span>Bagikan:</span>
+            <button class="share-btn" data-share="twitter" title="Twitter">𝕏</button>
+            <button class="share-btn" data-share="facebook" title="Facebook">f</button>
+            <button class="share-btn" data-share="linkedin" title="LinkedIn">in</button>
+            <button class="share-btn" data-share="copy" title="Copy Link">🔗</button>
+        </div>
+
+        <!-- RELATED POSTS -->
+        <section class="related-posts">
+            <h2>Artikel Terkait</h2>
+            <div class="related-grid">
+                <a href="blog.html" class="related-card">
+                    <div class="related-thumb" style="background: linear-gradient(135deg, #00f0ff, #7b2ff7)">💻</div>
+                    <h3>CSS Grid vs Flexbox</h3>
+                    <p>Kapan pakai yang mana?</p>
+                </a>
+                <a href="blog.html" class="related-card">
+                    <div class="related-thumb" style="background: linear-gradient(135deg, #ff00e5, #7b2ff7)">🎨</div>
+                    <h3>10 Prinsip Desain UI</h3>
+                    <p>Wajib dikuasai designer</p>
+                </a>
+                <a href="blog.html" class="related-card">
+                    <div class="related-thumb" style="background: linear-gradient(135deg, #00ff88, #00f0ff)">⚡</div>
+                    <h3>Optimasi Website</h3>
+                    <p>5 tips loading cepat</p>
+                </a>
+            </div>
+        </section>
+    </article>
+
+    <!-- AUTHOR BOX -->
+    <section class="author-box">
+        <div class="author-box-avatar">A</div>
+        <div class="author-box-info">
+            <h3>Andi Pratama</h3>
+            <p>CEO & Co-Founder NEXUS. Ex-Google, 10 tahun pengalaman di industri tech. Passionate tentang web development dan desain.</p>
+            <div class="author-box-social">
+                <a href="#">𝕏</a>
+                <a href="#">in</a>
+                <a href="#">@</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMENTS -->
+    <section class="comments-section">
+        <h2>💬 Komentar (3)</h2>
+
+        <form class="comment-form" id="commentForm">
+            <div class="comment-avatar" id="commentAvatar">U</div>
+            <div style="flex:1">
+                <textarea id="commentText" placeholder="Tulis komentar Anda..." rows="3" required></textarea>
+                <button type="submit" class="btn btn-primary btn-sm" style="margin-top:0.5rem">Kirim</button>
+            </div>
+        </form>
+
+        <div class="comments-list" id="commentsList">
+            <div class="comment-item">
+                <div class="comment-avatar" style="background:linear-gradient(135deg,#ff00e5,#7b2ff7)">S</div>
+                <div class="comment-body">
+                    <div class="comment-head">
+                        <strong>Sarah Wijaya</strong>
+                        <span>2 jam lalu</span>
+                    </div>
+                    <p>Artikel yang sangat membantu! Saya baru mulai belajar web dev dan ini jadi referensi yang bagus. Terima kasih 🙏</p>
+                </div>
+            </div>
+            <div class="comment-item">
+                <div class="comment-avatar" style="background:linear-gradient(135deg,#00ff88,#00f0ff)">B</div>
+                <div class="comment-body">
+                    <div class="comment-head">
+                        <strong>Budi Santoso</strong>
+                        <span>5 jam lalu</span>
+                    </div>
+                    <p>Bagian optimasi performa-nya mantap. Bisa ditambah tips tentang image lazy loading lebih detail?</p>
+                </div>
+            </div>
+            <div class="comment-item">
+                <div class="comment-avatar" style="background:linear-gradient(135deg,#ffb800,#ff00e5)">M</div>
+                <div class="comment-body">
+                    <div class="comment-head">
+                        <strong>Maya Sari</strong>
+                        <span>Kemarin</span>
+                    </div>
+                    <p>Nice article! Kapan-kapan bikin tutorial tentang React juga dong 😄</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="page-cta">
+        <h2>Siap Mulai <span class="gradient">Berkarya?</span></h2>
+        <p>Daftar gratis dan mulai project pertama Anda hari ini.</p>
+        <a href="register.html" class="btn btn-primary">Daftar Gratis →</a>
+    </section>
+
+    <footer>
+        <div class="logo">NEXUS</div>
+        <p>© 2024 NEXUS. All rights reserved.</p>
+    </footer>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+    <script src="pages.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initParticles();
+            initThemeToggle();
+            initBlogPostPage();
+        });
+    </script>
+</body>
+</html>

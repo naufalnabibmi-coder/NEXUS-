@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - NEXUS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <nav>
+        <a href="index.html" class="logo">NEXUS</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pricing.html">Harga</a></li>
+            <li><a href="about.html">Tentang</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html" class="active">Kontak</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+    </nav>
+
+    <section class="page-hero">
+        <div class="page-badge">📬 Hubungi Kami</div>
+        <h1>Ada Pertanyaan? <span class="gradient">Kami Siap Bantu</span></h1>
+        <p>Tim kami siap menjawab pertanyaan Anda dalam 24 jam.</p>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-grid">
+            <!-- INFO -->
+            <div class="contact-info">
+                <h2>Informasi Kontak</h2>
+                <p>Hubungi kami melalui salah satu channel di bawah ini:</p>
+
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="contact-icon">✉</div>
+                        <div>
+                            <strong>Email</strong>
+                            <p>hello@nexus.id</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>Telepon</strong>
+                            <p>+62 21 1234 5678</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Alamat</strong>
+                            <p>Jl. Sudirman No. 1<br>Jakarta Pusat 10220</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <div class="contact-icon">🕐</div>
+                        <div>
+                            <strong>Jam Operasional</strong>
+                            <p>Senin - Jumat: 09:00 - 18:00<br>Sabtu: 09:00 - 13:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-social">
+                    <a href="#" title="Twitter">𝕏</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="LinkedIn">in</a>
+                    <a href="#" title="YouTube">▶</a>
+                </div>
+            </div>
+
+            <!-- FORM -->
+            <div class="contact-form-box">
+                <h2>Kirim Pesan</h2>
+                <p>Isi form di bawah dan kami akan segera merespon.</p>
+
+                <form id="contactForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactName">Nama</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="contactName" placeholder="Nama Anda" required>
+                            </div>
+                            <span class="error-message" id="contactNameError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">✉</span>
+                                <input type="email" id="contactEmail" placeholder="email@anda.com" required>
+                            </div>
+                            <span class="error-message" id="contactEmailError"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactSubject">Subjek</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">📝</span>
+                            <input type="text" id="contactSubject" placeholder="Subjek pesan" required>
+                        </div>
+                        <span class="error-message" id="contactSubjectError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactMessage">Pesan</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon" style="top:1rem;transform:none">💬</span>
+                            <textarea id="contactMessage" placeholder="Tulis pesan Anda..." rows="5" required style="padding-left:2.8rem;padding-top:0.95rem"></textarea>
+                        </div>
+                        <span class="error-message" id="contactMessageError"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width:100%" id="contactSubmit">
+                        <span class="btn-text">Kirim Pesan</span>
+                        <span class="btn-loader"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="contact-section" style="padding-top:0">
+        <div style="max-width:1100px;margin:0 auto;border-radius:20px;overflow:hidden;border:1px solid var(--border);height:350px;background:var(--bg-card);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--text-dim)">
+            🗺️ Google Maps akan muncul di sini (butuh API key)
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">NEXUS</div>
+        <p>© 2024 NEXUS. All rights reserved.</p>
+    </footer>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+    <script src="pages.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initParticles();
+            initThemeToggle();
+            initContactPage();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan - NEXUS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <nav>
+        <a href="index.html" class="logo">NEXUS</a>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="settings.html" class="active">Settings</a></li>
+            <li><a href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+    </nav>
+
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-user">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <h4 id="sidebarName">User</h4>
+                <p id="sidebarEmail">user@email.com</p>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">📊 Dashboard</a></li>
+                <li><a href="projects.html">📁 Projects</a></li>
+                <li><a href="messages.html">💬 Messages</a></li>
+                <li><a href="profile.html">👤 Profil</a></li>
+                <li><a href="settings.html" class="active">⚙️ Settings</a></li>
+            </ul>
+        </aside>
+
+        <main class="app-main">
+            <div class="page-header">
+                <h1>Pengaturan</h1>
+                <p>Kelola preferensi akun Anda</p>
+            </div>
+
+            <!-- SECTION: NOTIFIKASI -->
+            <section class="settings-section">
+                <div class="settings-header">
+                    <div>
+                        <h2>🔔 Notifikasi</h2>
+                        <p>Atur bagaimana Anda menerima notifikasi</p>
+                    </div>
+                </div>
+                <div class="settings-list">
+                    <div class="settings-item">
+                        <div>
+                            <strong>Email Notifikasi</strong>
+                            <p>Terima update lewat email</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="notifEmail" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="settings-item">
+                        <div>
+                            <strong>Push Notifikasi</strong>
+                            <p>Notifikasi di browser</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="notifPush" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="settings-item">
+                        <div>
+                            <strong>Newsletter</strong>
+                            <p>Info produk & promo terbaru</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="notifNews">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: KEAMANAN -->
+            <section class="settings-section">
+                <div class="settings-header">
+                    <div>
+                        <h2>🔐 Keamanan</h2>
+                        <p>Lindungi akun Anda</p>
+                    </div>
+                </div>
+                <div class="settings-list">
+                    <div class="settings-item">
+                        <div>
+                            <strong>Ubah Password</strong>
+                            <p>Terakhir diubah 30 hari lalu</p>
+                        </div>
+                        <button class="btn btn-outline btn-sm" id="changePwdBtn">Ubah</button>
+                    </div>
+                    <div class="settings-item">
+                        <div>
+                            <strong>Autentikasi 2 Faktor</strong>
+                            <p>Keamanan ekstra saat login</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="twoFactor">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="settings-item">
+                        <div>
+                            <strong>Perangkat Aktif</strong>
+                            <p>1 perangkat terhubung</p>
+                        </div>
+                        <button class="btn btn-outline btn-sm">Lihat</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: PRIVASI -->
+            <section class="settings-section">
+                <div class="settings-header">
+                    <div>
+                        <h2>🛡️ Privasi</h2>
+                        <p>Kontrol siapa yang bisa melihat profil Anda</p>
+                    </div>
+                </div>
+                <div class="settings-list">
+                    <div class="settings-item">
+                        <div>
+                            <strong>Profil Publik</strong>
+                            <p>Profil bisa dilihat semua orang</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="publicProfile">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="settings-item">
+                        <div>
+                            <strong>Tampilkan Email</strong>
+                            <p>Email tampil di profil publik</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="showEmail">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: DANGER ZONE -->
+            <section class="settings-section danger-zone">
+                <div class="settings-header">
+                    <div>
+                        <h2>⚠️ Zona Berbahaya</h2>
+                        <p>Tindakan ini tidak bisa dibatalkan</p>
+                    </div>
+                </div>
+                <div class="settings-list">
+                    <div class="settings-item">
+                        <div>
+                            <strong>Hapus Akun</strong>
+                            <p>Semua data akan dihapus permanen</p>
+                        </div>
+                        <button class="btn btn-danger btn-sm" id="deleteAccountBtn">Hapus Akun</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL UBAH PASSWORD -->
+    <div class="modal" id="pwdModal">
+        <div class="modal-content">
+            <div class="modal-icon">🔐</div>
+            <h2>Ubah Password</h2>
+            <form id="pwdForm">
+                <div class="form-group" style="text-align:left">
+                    <label>Password Lama</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="oldPwd" required placeholder="Password saat ini">
+                    </div>
+                </div>
+                <div class="form-group" style="text-align:left">
+                    <label>Password Baru</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="newPwd" required placeholder="Min 8 karakter">
+                    </div>
+                </div>
+                <div class="form-actions" style="margin-top:1rem">
+                    <button type="button" class="btn btn-outline" id="pwdCancel">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+    <script>
+        initParticles();
+        initThemeToggle();
+        initSidebar();
+        initSettingsPage();
+    </script>
+</body>
+</html>

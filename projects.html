@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - NEXUS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="projects-extra.css">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <nav>
+        <a href="index.html" class="logo">NEXUS</a>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="messages.html">Messages</a></li>
+            <li><a href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+    </nav>
+
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-user">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <h4 id="sidebarName">User</h4>
+                <p id="sidebarEmail">user@email.com</p>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">📊 Dashboard</a></li>
+                <li><a href="projects.html" class="active">📁 Projects</a></li>
+                <li><a href="messages.html">💬 Messages</a></li>
+                <li><a href="profile.html">👤 Profil</a></li>
+                <li><a href="settings.html">⚙️ Settings</a></li>
+            </ul>
+        </aside>
+
+        <main class="app-main">
+            <!-- HEADER -->
+            <div class="page-header-row">
+                <div>
+                    <h1>Projects</h1>
+                    <p>Kelola semua project Anda</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-outline btn-sm" id="exportBtn" title="Export data">
+                        ⬇ Export
+                    </button>
+                    <button class="btn btn-outline btn-sm" id="importBtn" title="Import data">
+                        ⬆ Import
+                    </button>
+                    <input type="file" id="importFile" accept=".json" hidden>
+                    <button class="btn btn-primary" id="newProjectBtn">+ Project Baru</button>
+                </div>
+            </div>
+
+            <!-- STATS -->
+            <div class="project-stats">
+                <div class="project-stat">
+                    <div class="stat-icon">📁</div>
+                    <div>
+                        <div class="stat-num" id="totalProjects">0</div>
+                        <div class="stat-lbl">Total</div>
+                    </div>
+                </div>
+                <div class="project-stat">
+                    <div class="stat-icon">⚡</div>
+                    <div>
+                        <div class="stat-num" id="activeProjects">0</div>
+                        <div class="stat-lbl">Aktif</div>
+                    </div>
+                </div>
+                <div class="project-stat">
+                    <div class="stat-icon">✅</div>
+                    <div>
+                        <div class="stat-num" id="completedProjects">0</div>
+                        <div class="stat-lbl">Selesai</div>
+                    </div>
+                </div>
+                <div class="project-stat">
+                    <div class="stat-icon">📦</div>
+                    <div>
+                        <div class="stat-num" id="archivedProjects">0</div>
+                        <div class="stat-lbl">Arsip</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW SWITCHER + SEARCH + FILTER -->
+            <div class="project-toolbar">
+                <div class="view-switch">
+                    <button class="view-btn active" data-view="grid" title="Grid view">▦</button>
+                    <button class="view-btn" data-view="list" title="List view">☰</button>
+                    <button class="view-btn" data-view="kanban" title="Kanban view">▤</button>
+                </div>
+
+                <div class="project-search">
+                    <span>🔍</span>
+                    <input type="text" id="projectSearch" placeholder="Cari project...">
+                </div>
+
+                <select class="toolbar-select" id="sortSelect">
+                    <option value="newest">Terbaru</option>
+                    <option value="oldest">Terlama</option>
+                    <option value="name">Nama A-Z</option>
+                    <option value="status">Status</option>
+                </select>
+            </div>
+
+            <!-- FILTER BAR -->
+            <div class="filter-bar" style="margin-bottom:1.5rem">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="active">⚡ Aktif</button>
+                <button class="filter-btn" data-filter="completed">✅ Selesai</button>
+                <button class="filter-btn" data-filter="archived">📦 Arsip</button>
+            </div>
+
+            <!-- GRID VIEW -->
+            <div class="project-grid" id="projectGrid"></div>
+
+            <!-- LIST VIEW -->
+            <div class="project-list" id="projectList" style="display:none"></div>
+
+            <!-- KANBAN VIEW -->
+            <div class="kanban-board" id="kanbanBoard" style="display:none">
+                <div class="kanban-column" data-status="active">
+                    <div class="kanban-header">
+                        <span>⚡ Aktif</span>
+                        <span class="kanban-count" id="kanbanCountActive">0</span>
+                    </div>
+                    <div class="kanban-cards" id="kanbanCardsActive"></div>
+                </div>
+                <div class="kanban-column" data-status="completed">
+                    <div class="kanban-header">
+                        <span>✅ Selesai</span>
+                        <span class="kanban-count" id="kanbanCountCompleted">0</span>
+                    </div>
+                    <div class="kanban-cards" id="kanbanCardsCompleted"></div>
+                </div>
+                <div class="kanban-column" data-status="archived">
+                    <div class="kanban-header">
+                        <span>📦 Arsip</span>
+                        <span class="kanban-count" id="kanbanCountArchived">0</span>
+                    </div>
+                    <div class="kanban-cards" id="kanbanCardsArchived"></div>
+                </div>
+            </div>
+
+            <!-- EMPTY STATE -->
+            <div class="project-empty" id="projectEmpty" style="display:none">
+                <div style="font-size:4rem;margin-bottom:1rem">📁</div>
+                <h3>Belum ada project</h3>
+                <p>Mulai buat project pertama Anda!</p>
+                <button class="btn btn-primary" id="emptyNewBtn">+ Buat Project</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL PROJECT BARU -->
+    <div class="modal" id="newProjectModal">
+        <div class="modal-content">
+            <div class="modal-icon">🚀</div>
+            <h2>Project Baru</h2>
+            <form id="newProjectForm">
+                <div class="form-group" style="text-align:left">
+                    <label>Nama Project</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="projectName" required placeholder="Contoh: Website Portfolio" maxlength="50">
+                    </div>
+                    <span class="error-message" id="projectNameError"></span>
+                </div>
+
+                <div class="form-group" style="text-align:left">
+                    <label>Deskripsi</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="projectDesc" placeholder="Deskripsi singkat" maxlength="100">
+                    </div>
+                </div>
+
+                <div class="form-group" style="text-align:left">
+                    <label>Status</label>
+                    <select id="projectStatus" class="project-select">
+                        <option value="active">⚡ Aktif</option>
+                        <option value="completed">✅ Selesai</option>
+                        <option value="archived">📦 Arsip</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="text-align:left">
+                    <label>Deadline (opsional)</label>
+                    <div class="input-wrapper">
+                        <input type="date" id="projectDeadline">
+                    </div>
+                </div>
+
+                <div class="form-actions" style="margin-top:1rem">
+                    <button type="button" class="btn btn-outline" id="cancelProject">Batal</button>
+                    <button type="submit" class="btn btn-primary">Buat Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL DETAIL PROJECT -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content detail-modal">
+            <div class="detail-header">
+                <span class="status" id="detailStatus">Aktif</span>
+                <button class="icon-btn" id="closeDetail">✕</button>
+            </div>
+            <h2 id="detailTitle">Project Name</h2>
+            <p class="detail-desc" id="detailDesc">Deskripsi project</p>
+
+            <div class="detail-info">
+                <div class="detail-info-item">
+                    <span>📅 Dibuat</span>
+                    <strong id="detailCreated">-</strong>
+                </div>
+                <div class="detail-info-item">
+                    <span>⏰ Deadline</span>
+                    <strong id="detailDeadline">-</strong>
+                </div>
+                <div class="detail-info-item">
+                    <span>📋 Tugas</span>
+                    <strong id="detailTasks">0 tugas</strong>
+                </div>
+            </div>
+
+            <div class="detail-actions">
+                <button class="btn btn-outline btn-sm" id="detailEditBtn">✏️ Edit</button>
+                <button class="btn btn-outline btn-sm" id="detailArchiveBtn">📦 Arsip</button>
+                <button class="btn btn-danger btn-sm" id="detailDeleteBtn">🗑 Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EDIT PROJECT -->
+    <div class="modal" id="editProjectModal">
+        <div class="modal-content">
+            <div class="modal-icon">✏️</div>
+            <h2>Edit Project</h2>
+            <form id="editProjectForm">
+                <input type="hidden" id="editProjectId">
+                <div class="form-group" style="text-align:left">
+                    <label>Nama Project</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="editProjectName" required maxlength="50">
+                    </div>
+                </div>
+
+                <div class="form-group" style="text-align:left">
+                    <label>Deskripsi</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="editProjectDesc" maxlength="100">
+                    </div>
+                </div>
+
+                <div class="form-group" style="text-align:left">
+                    <label>Status</label>
+                    <select id="editProjectStatus" class="project-select">
+                        <option value="active">⚡ Aktif</option>
+                        <option value="completed">✅ Selesai</option>
+                        <option value="archived">📦 Arsip</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="text-align:left">
+                    <label>Deadline</label>
+                    <div class="input-wrapper">
+                        <input type="date" id="editProjectDeadline">
+                    </div>
+                </div>
+
+                <div class="form-actions" style="margin-top:1rem">
+                    <button type="button" class="btn btn-outline" id="cancelEdit">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+    <script src="projects.js"></script>
+</body>
+</html>

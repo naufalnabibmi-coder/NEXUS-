@@ -1,0 +1,363 @@
+/* ============================================
+   NEXUS - PARALLAX.CSS (SIMPLE VERSION)
+   ============================================ */
+
+.parallax-body {
+    overflow-x: hidden;
+}
+
+/* ---------- PARALLAX LAYERS ---------- */
+.parallax-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
+}
+
+.layer-stars {
+    background-image:
+        radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+        radial-gradient(1px 1px at 60% 70%, #fff, transparent),
+        radial-gradient(2px 2px at 40% 50%, #fff, transparent),
+        radial-gradient(1px 1px at 80% 20%, #fff, transparent),
+        radial-gradient(1px 1px at 10% 80%, #fff, transparent),
+        radial-gradient(1px 1px at 70% 40%, #fff, transparent);
+    background-size: 200% 200%;
+    opacity: 0.5;
+    animation: twinkle 8s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
+.layer-glow {
+    overflow: hidden;
+}
+
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: float 15s ease-in-out infinite;
+}
+
+.glow-orb-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(0, 240, 255, 0.4);
+    top: 10%;
+    left: 5%;
+}
+
+.glow-orb-2 {
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 0, 229, 0.3);
+    top: 40%;
+    right: 10%;
+    animation-delay: 5s;
+}
+
+.glow-orb-3 {
+    width: 350px;
+    height: 350px;
+    background: rgba(123, 47, 247, 0.3);
+    bottom: 10%;
+    left: 40%;
+    animation-delay: 10s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, -40px) scale(1.15); }
+}
+
+.layer-grid {
+    background-image:
+        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.6;
+}
+
+/* ---------- HERO ---------- */
+.parallax-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8rem 5% 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.parallax-content {
+    will-change: transform;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 11vw, 9rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -4px;
+    margin-bottom: 2rem;
+}
+
+.title-line {
+    display: block;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-dim);
+    max-width: 620px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, var(--primary), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+    0%, 100% { transform: scaleY(0.5); opacity: 0.5; }
+    50% { transform: scaleY(1); opacity: 1; }
+}
+
+/* ---------- SECTIONS ---------- */
+.parallax-section {
+    padding: 8rem 5%;
+    position: relative;
+    z-index: 1;
+}
+
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-head {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-head h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    letter-spacing: -1.5px;
+}
+
+.section-head p {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+}
+
+/* ---------- CARDS ---------- */
+.parallax-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+}
+
+.p-card {
+    padding: 2.2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s, box-shadow 0.4s;
+    will-change: transform;
+}
+
+.p-card:hover {
+    border-color: var(--primary);
+    box-shadow:
+        0 25px 60px rgba(0, 240, 255, 0.2),
+        0 0 40px rgba(0, 240, 255, 0.15);
+}
+
+.p-card-glow {
+    position: absolute;
+    inset: -50%;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.25) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+.p-card:hover .p-card-glow {
+    opacity: 1;
+}
+
+.p-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    margin-bottom: 1.3rem;
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
+    transition: transform 0.4s;
+}
+
+.p-card:hover .p-icon {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+.p-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+    position: relative;
+    z-index: 1;
+}
+
+.p-card p {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---------- SHOWCASE ---------- */
+.parallax-showcase {
+    padding: 8rem 5%;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.showcase-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.showcase-content h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    letter-spacing: -1.5px;
+}
+
+.showcase-subtitle {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    margin-bottom: 3.5rem;
+}
+
+.showcase-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    padding: 3rem 2rem;
+    background: var(--gradient-soft);
+    border: 1px solid var(--border);
+    border-radius: 25px;
+}
+
+.showcase-stat .stat-num {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+}
+
+.showcase-stat .stat-txt {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+
+/* ---------- CTA ---------- */
+.parallax-cta {
+    padding: 8rem 5%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-content {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    position: relative;
+}
+
+.cta-content h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    .hero-title {
+        letter-spacing: -2px;
+    }
+    .glow-orb-1,
+    .glow-orb-2,
+    .glow-orb-3 {
+        width: 250px;
+        height: 250px;
+        filter: blur(60px);
+    }
+    .parallax-section {
+        padding: 5rem 5%;
+    }
+    .showcase-stats {
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        letter-spacing: -1px;
+    }
+    .cta-content {
+        padding: 2.5rem 1.5rem;
+    }
+}

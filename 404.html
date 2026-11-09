@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | NEXUS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 5% 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .error-code {
+            font-size: clamp(6rem, 20vw, 15rem);
+            font-weight: 900;
+            line-height: 1;
+            background: var(--gradient);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease infinite;
+            letter-spacing: -8px;
+        }
+        .error-page h1 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+        .error-page p {
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <nav>
+        <a href="index.html" class="logo">NEXUS</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Daftar</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+    </nav>
+
+    <section class="error-page">
+        <div class="error-code">404</div>
+        <h1>Halaman Tidak D
+        

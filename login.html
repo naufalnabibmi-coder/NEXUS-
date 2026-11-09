@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - NEXUS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <nav>
+        <a href="index.html" class="logo">NEXUS</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html" class="active">Login</a></li>
+            <li><a href="register.html">Daftar</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+    </nav>
+
+    <section class="register-section">
+        <div class="register-container" style="grid-template-columns:1fr;max-width:480px;">
+            <div class="register-form-wrapper">
+                <div class="form-header">
+                    <h2>Selamat Datang</h2>
+                    <p>Belum punya akun? <a href="register.html">Daftar di sini</a></p>
+                </div>
+                <form id="loginForm" class="register-form" novalidate>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">✉</span>
+                            <input type="email" id="email" placeholder="nama@email.com" required>
+                        </div>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="password" placeholder="Password Anda" required>
+                            <button type="button" class="toggle-password" id="togglePassword"><span class="eye-icon">👁</span></button>
+                        </div>
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="remember">
+                            <span class="checkmark"></span>
+                            <span>Ingat saya</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+                        <span class="btn-text">Masuk</span>
+                        <span class="btn-loader"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Theme
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        themeToggle.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+        themeToggle.addEventListener('click', () => {
+            const t = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+            localStorage.setItem('theme', t);
+            themeToggle.textContent = t === 'dark' ? '🌙' : '☀️';
+        });
+
+        // Particles (mini version)
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resizeCanvas() { canvas.width = innerWidth; canvas.height = innerHeight; }
+        resizeCanvas(); addEventListener('resize', resizeCanvas);
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
+                this.color = Math.random() > 0.5 ? '0, 240, 255' : '255, 0, 229';
+            }
+            update() {
+                this.x += this.speedX; this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+            }
+            draw() {
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`; ctx.fill();
+            }
+        }
+        for (let i = 0; i < 60; i++) particles.push(new Particle());
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Toggle password
+        const pw = document.getElementById('password');
+        const tg = document.getElementById('togglePassword');
+        tg.addEventListener('click', () => {
+            const show = pw.type === 'password';
+            pw.type = show ? 'text' : 'password';
+            tg.querySelector('.eye-icon').textContent = show ? '🙈' : '👁';
+        });
+
+        // Login submit
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            let valid = true;
+
+            const emailErr = document.getElementById('emailError');
+            const pwErr = document.getElementById('passwordError');
+            emailErr.classList.remove('show'); pwErr.classList.remove('show');
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                emailErr.textContent = 'Email tidak valid';
+                emailErr.classList.add('show');
+                valid = false;
+            }
+            if (password.length < 6) {
+                pwErr.textContent = 'Password minimal 6 karakter';
+                pwErr.classList.add('show');
+                valid = false;
+            }
+            if (!valid) return;
+
+            const btn = document.getElementById('submitBtn');
+            btn.classList.add('loading'); btn.disabled = true;
+            await new Promise(r => setTimeout(r, 1200));
+
+            // Simpan sesi
+            localStorage.setItem('user', JSON.stringify({ email, name: email.split('@')[0] }));
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>

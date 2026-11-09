@@ -1,0 +1,239 @@
+/* ============================================
+   NEXUS — TOUR.CSS
+   Onboarding Tour + PWA Install Banner
+   ============================================ */
+
+/* ---------- TOUR OVERLAY ---------- */
+.tour-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 5, 8, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 5000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.tour-overlay.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.tour-box {
+    background: var(--bg);
+    border: 1px solid var(--primary);
+    border-radius: 22px;
+    padding: 2.2rem;
+    max-width: 440px;
+    width: 100%;
+    box-shadow:
+        0 0 60px rgba(0, 240, 255, 0.3),
+        0 20px 60px rgba(0, 0, 0, 0.6);
+    animation: tourIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.tour-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient);
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes tourIn {
+    from {
+        transform: scale(0.85) translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.tour-step {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    background: var(--gradient);
+    color: #0a0a0f;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 1.2rem;
+}
+
+.tour-box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.7rem;
+    letter-spacing: -0.5px;
+}
+
+.tour-box p {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 1.8rem;
+}
+
+.tour-actions {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: flex-end;
+}
+
+/* Dots indicator */
+.tour-dots {
+    display: flex;
+    gap: 0.4rem;
+    justify-content: center;
+    margin-top: 1.2rem;
+}
+
+.tour-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: all 0.3s;
+}
+
+.tour-dot.active {
+    background: var(--primary);
+    width: 24px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px var(--primary);
+}
+
+/* ---------- PWA INSTALL BANNER ---------- */
+.pwa-banner {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 1.2rem 1.5rem;
+    background: var(--bg);
+    border: 1px solid var(--primary);
+    border-radius: 18px;
+    box-shadow:
+        0 0 40px rgba(0, 240, 255, 0.3),
+        0 20px 50px rgba(0, 0, 0, 0.5);
+    z-index: 4000;
+    display: none;
+    align-items: center;
+    gap: 1rem;
+    animation: slideUp 0.5s ease;
+}
+
+.pwa-banner.active {
+    display: flex;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.pwa-banner .pwa-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #0a0a0f;
+    flex-shrink: 0;
+}
+
+.pwa-banner .pwa-text {
+    flex: 1;
+}
+
+.pwa-banner .pwa-text strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+}
+
+.pwa-banner .pwa-text p {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.pwa-banner .pwa-actions {
+    display: flex;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+
+.pwa-banner button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.9rem;
+    transition: all 0.2s;
+}
+
+.pwa-install-btn {
+    background: var(--gradient);
+    color: #0a0a0f;
+}
+
+.pwa-install-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 240, 255, 0.4);
+}
+
+.pwa-close-btn {
+    background: transparent;
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    padding: 0.3rem 0.5rem;
+}
+
+.pwa-close-btn:hover {
+    color: var(--text);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 480px) {
+    .tour-box {
+        padding: 1.8rem 1.4rem;
+    }
+    .tour-box h3 {
+        font-size: 1.2rem;
+    }
+    .pwa-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.2rem;
+    }
+    .pwa-banner .pwa-actions {
+        width: 100%;
+        justify-content: center;
+    }
+}

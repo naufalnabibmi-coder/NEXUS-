@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - NEXUS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <nav>
+        <a href="index.html" class="logo">NEXUS</a>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="profile.html" class="active">Profil</a></li>
+            <li><a href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+    </nav>
+
+    <div class="app-wrapper">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-user">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <h4 id="sidebarName">User</h4>
+                <p id="sidebarEmail">user@email.com</p>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">📊 Dashboard</a></li>
+                <li><a href="projects.html">📁 Projects</a></li>
+                <li><a href="messages.html">💬 Messages</a></li>
+                <li><a href="profile.html" class="active">👤 Profil</a></li>
+                <li><a href="settings.html">⚙️ Settings</a></li>
+            </ul>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="app-main">
+            <div class="page-header">
+                <h1>Profil Saya</h1>
+                <p>Kelola informasi pribadi Anda</p>
+            </div>
+
+            <div class="profile-layout">
+                <!-- CARD PROFIL -->
+                <div class="profile-card">
+                    <div class="profile-avatar-wrap">
+                        <div class="profile-avatar" id="profileAvatar">U</div>
+                        <button class="avatar-upload-btn" id="avatarUploadBtn" title="Ubah foto">📷</button>
+                        <input type="file" id="avatarInput" accept="image/*" hidden>
+                    </div>
+                    <h3 id="profileName">User</h3>
+                    <p id="profileEmail">user@email.com</p>
+                    <span class="profile-badge">✦ Premium Member</span>
+                    <div class="profile-stats">
+                        <div>
+                            <strong>12</strong>
+                            <span>Projects</span>
+                        </div>
+                        <div>
+                            <strong>8</strong>
+                            <span>Completed</span>
+                        </div>
+                        <div>
+                            <strong>3</strong>
+                            <span>Pending</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FORM EDIT -->
+                <div class="profile-form-card">
+                    <h2>Edit Informasi</h2>
+                    <form id="profileForm" novalidate>
+                        <div class="form-group">
+                            <label for="editName">Nama Lengkap</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="editName" required>
+                            </div>
+                            <span class="error-message" id="editNameError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editEmail">Email</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">✉</span>
+                                <input type="email" id="editEmail" required>
+                            </div>
+                            <span class="error-message" id="editEmailError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editBio">Bio</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">📝</span>
+                                <input type="text" id="editBio" placeholder="Ceritakan tentang Anda..." maxlength="100">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editCity">Kota</label>
+                                <div class="input-wrapper">
+                                    <span class="input-icon">📍</span>
+                                    <input type="text" id="editCity" placeholder="Jakarta">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="editPhone">Telepon</label>
+                                <div class="input-wrapper">
+                                    <span class="input-icon">📱</span>
+                                    <input type="tel" id="editPhone" placeholder="+62 812...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" id="cancelBtn">Batal</button>
+                            <button type="submit" class="btn btn-primary">
+                                <span class="btn-text">Simpan Perubahan</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+    <script>
+        initParticles();
+        initThemeToggle();
+        initSidebar();
+        initProfilePage();
+    </script>
+</body>
+</html>

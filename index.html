@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS - Digital Experience</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <nav>
+        <a href="index.html" class="logo">NEXUS</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#stats">Stats</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Daftar</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-badge">✦ Future is Here ✦</div>
+        <h1>Build The<br><span class="gradient">Impossible</span></h1>
+        <p>Platform digital generasi baru yang mengubah cara Anda berkreasi, berkolaborasi, dan berinovasi di era metaverse.</p>
+        <div class="hero-buttons">
+            <a href="register.html" class="btn btn-primary">Mulai Sekarang</a>
+            <a href="#features" class="btn btn-outline">Pelajari Lebih</a>
+        </div>
+        <div class="scroll-indicator"><span></span></div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-header reveal">
+            <h2>Fitur <span class="gradient">Luar Biasa</span></h2>
+            <p>Teknologi terdepan untuk pengalaman yang tak terlupakan</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card reveal"><div class="feature-icon">⚡</div><h3>Ultra Cepat</h3><p>Performa kilat dengan teknologi edge computing terbaru.</p></div>
+            <div class="feature-card reveal"><div class="feature-icon">🔒</div><h3>Keamanan Maksimal</h3><p>Enkripsi end-to-end dengan standar militer.</p></div>
+            <div class="feature-card reveal"><div class="feature-icon">🎨</div><h3>Desain Futuristik</h3><p>Interface indah dan intuitif dengan animasi halus.</p></div>
+            <div class="feature-card reveal"><div class="feature-icon">🌐</div><h3>Global Scale</h3><p>Infrastruktur tersebar di 50+ negara.</p></div>
+            <div class="feature-card reveal"><div class="feature-icon">🤖</div><h3>AI Powered</h3><p>Ditenagai kecerdasan buatan generasi terbaru.</p></div>
+            <div class="feature-card reveal"><div class="feature-icon">🚀</div><h3>Siap Masa Depan</h3><p>Arsitektur modular untuk tantangan masa depan.</p></div>
+        </div>
+    </section>
+
+    <section class="stats" id="stats">
+        <div class="stats-grid">
+            <div class="reveal"><div class="stat-number" data-target="500">0</div><div class="stat-label">Project Selesai</div></div>
+            <div class="reveal"><div class="stat-number" data-target="120">0</div><div class="stat-label">Klien Global</div></div>
+            <div class="reveal"><div class="stat-number" data-target="99">0</div><div class="stat-label">% Kepuasan</div></div>
+            <div class="reveal"><div class="stat-number" data-target="24">0</div><div class="stat-label">Jam Support</div></div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="cta-box reveal">
+            <h2>Siap Memulai <span class="gradient">Petualangan?</span></h2>
+            <p>Bergabunglah dengan ribuan inovator yang telah merasakan pengalaman digital masa depan.</p>
+            <a href="register.html" class="btn btn-primary">Daftar Gratis</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">NEXUS</div>
+        <p>&copy; 2024 NEXUS. Crafted with passion & code.</p>
+    </footer>
+
+    <script>
+        // ===== THEME TOGGLE =====
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        themeToggle.textContent = currentTheme === 'dark' ? '🌙' : '☀️';
+
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+        });
+
+        // ===== PARTICLES =====
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resizeCanvas() { canvas.width = innerWidth; canvas.height = innerHeight; }
+        resizeCanvas();
+        addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
+                this.color = Math.random() > 0.5 ? '0, 240, 255' : '255, 0, 229';
+            }
+            update() {
+                this.x += this.speedX; this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+        for (let i = 0; i < 100; i++) particles.push(new Particle());
+
+        function connectParticles() {
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+                    const dx = particles[a].x - particles[b].x;
+                    const dy = particles[a].y - particles[b].y;
+                    const d = Math.sqrt(dx * dx + dy * dy);
+                    if (d < 120) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${0.1 * (1 - d / 120)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            connectParticles();
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // ===== SCROLL REVEAL =====
+        const reveals = document.querySelectorAll('.reveal');
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => e.isIntersecting && e.target.classList.add('active'));
+        }, { threshold: 0.1 });
+        reveals.forEach(el => obs.observe(el));
+
+        // ===== COUNTER =====
+        let counted = false;
+        const counters = document.querySelectorAll('.stat-number');
+        const cObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting && !counted) {
+                    counted = true;
+                    counters.forEach(c => {
+                        const target = +c.dataset.target;
+                        let cur = 0;
+                        const step = target / 100;
+                        const tick = () => {
+                            cur += step;
+                            if (cur < target) { c.textContent = Math.ceil(cur); requestAnimationFrame(tick); }
+                            else c.textContent = target;
+                        };
+                        tick();
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(c => cObs.observe(c));
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

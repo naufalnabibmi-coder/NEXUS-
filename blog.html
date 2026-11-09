@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - NEXUS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <nav>
+        <a href="index.html" class="logo">NEXUS</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pricing.html">Harga</a></li>
+            <li><a href="about.html">Tentang</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="contact.html">Kontak</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+    </nav>
+
+    <section class="page-hero">
+        <div class="page-badge">📝 Blog</div>
+        <h1>Artikel & <span class="gradient">Insight</span></h1>
+        <p>Temukan tips, tutorial, dan berita terbaru seputar dunia digital</p>
+    </section>
+
+    <!-- FEATURED POST -->
+    <section class="blog-featured">
+        <div class="featured-card">
+            <div class="featured-image">🚀</div>
+            <div class="featured-content">
+                <span class="blog-tag">FEATURED</span>
+                <h2>Cara Membangun Website Modern dengan HTML, CSS, dan JavaScript</h2>
+                <p>Panduan lengkap membangun website futuristik dari nol, termasuk animasi dan responsif. Cocok untuk pemula maupun yang sudah berpengalaman.</p>
+                <div class="blog-meta">
+                    <span>👤 Andi Pratama</span>
+                    <span>📅 15 Nov 2024</span>
+                    <span>⏱ 8 menit baca</span>
+                </div>
+                <a href="blog-post.html" class="btn btn-primary" style="margin-top:1rem">Baca Artikel →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTER -->
+    <section class="blog-section">
+        <div class="blog-filters">
+            <button class="filter-btn active" data-cat="all">Semua</button>
+            <button class="filter-btn" data-cat="tutorial">Tutorial</button>
+            <button class="filter-btn" data-cat="design">Design</button>
+            <button class="filter-btn" data-cat="news">Berita</button>
+            <button class="filter-btn" data-cat="tips">Tips</button>
+        </div>
+
+        <!-- BLOG GRID -->
+        <div class="blog-grid" id="blogGrid">
+            <!-- Post 1 -->
+            <article class="blog-card" data-cat="tutorial">
+                <div class="blog-thumb" style="background: linear-gradient(135deg, #00f0ff, #7b2ff7)">💻</div>
+                <div class="blog-body">
+                    <span class="blog-cat">Tutorial</span>
+                    <h3>CSS Grid vs Flexbox: Kapan Pakai yang Mana?</h3>
+                    <p>Pelajari perbedaan mendasar dan kapan sebaiknya menggunakan CSS Grid atau Flexbox untuk layout modern.</p>
+                    <div class="blog-meta-small">
+                        <span>📅 12 Nov 2024</span>
+                        <span>⏱ 5 menit</span>
+                    </div>
+                    <a href="blog-post.html" class="read-more">Baca →</a>
+                </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="blog-card" data-cat="design">
+                <div class="blog-thumb" style="background: linear-gradient(135deg, #ff00e5, #7b2ff7)">🎨</div>
+                <div class="blog-body">
+                    <span class="blog-cat">Design</span>
+                    <h3>10 Prinsip Desain UI yang Wajib Dikuasai</h3>
+                    <p>Kumpulan prinsip desain dasar yang membedakan UI biasa dengan UI profesional.</p>
+                    <div class="blog-meta-small">
+                        <span>📅 10 Nov 2024</span>
+                        <span>⏱ 6 menit</span>
+                    </div>
+                    <a href="blog-post.html" class="read-more">Baca →</a>
+                </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="blog-card" data-cat="tips">
+                <div class="blog-thumb" style="background: linear-gradient(135deg, #00ff88, #00f0ff)">⚡</div>
+                <div class="blog-body">
+                    <span class="blog-cat">Tips</span>
+                    <h3>5 Tips Optimasi Website Agar Loading Cepat</h3>
+                    <p>Trik simpel untuk meningkatkan performa website tanpa harus jadi expert.</p>
+                    <div class="blog-meta-small">
+                        <span>📅 8 Nov 2024</span>
+                        <span>⏱ 4 menit</span>
+                    </div>
+                    <a href="blog-post.html" class="read-more">Baca →</a>
+                </div>
+            </article>
+
+            <!-- Post 4 -->
+            <article class="blog-card" data-cat="news">
+                <div class="blog-thumb" style="background: linear-gradient(135deg, #ffb800, #ff00e5)">📢</div>
+                <div class="blog-body">
+                    <span class="blog-cat">Berita</span>
+                    <h3>NEXUS v2.0 Resmi Diluncurkan!</h3>
+                    <p>Fitur baru: AI, PWA, multi-language, dan banyak lagi. Baca detailnya di sini.</p>
+                    <div class="blog-meta-small">
+                        <span>📅 5 Nov 2024</span>
+                        <span>⏱ 3 menit</span>
+                    </div>
+                    <a href="blog-post.html" class="read-more">Baca →</a>
+                </div>
+            </article>
+
+            <!-- Post 5 -->
+            <article class="blog-card" data-cat="tutorial">
+                <div class="blog-thumb" style="background: linear-gradient(135deg, #7b2ff7, #00f0ff)">🔧</div>
+                <div class="blog-body">
+                    <span class="blog-cat">Tutorial</span>
+                    <h3>Membuat Animasi CSS yang Smooth</h3>
+                    <p>Panduan membuat animasi halus menggunakan CSS transition dan keyframes.</p>
+                    <div class="blog-meta-small">
+                        <span>📅 2 Nov 2024</span>
+                        <span>⏱ 7 menit</span>
+                    </div>
+                    <a href="blog-post.html" class="read-more">Baca →</a>
+                </div>
+            </article>
+
+            <!-- Post 6 -->
+            <article class="blog-card" data-cat="design">
+                <div class="blog-thumb" style="background: linear-gradient(135deg, #00f0ff, #ff00e5)">🌗</div>
+                <div class="blog-body">
+                    <span class="blog-cat">Design</span>
+                    <h3>Dark Mode: Tren atau Kebutuhan?</h3>
+                    <p>Analisis mendalam mengapa dark mode semakin populer dan bagaimana implementasinya.</p>
+                    <div class="blog-meta-small">
+                        <span>📅 28 Okt 2024</span>
+                        <span>⏱ 5 menit</span>
+                    </div>
+                    <a href="blog-post.html" class="read-more">Baca →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section">
+        <div class="newsletter-card">
+            <h2>📬 Dapatkan Artikel Terbaru</h2>
+            <p>Berlangganan newsletter kami, gratis!</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" id="newsletterEmail" placeholder="email@anda.com" required>
+                <button type="submit" class="btn btn-primary">Langganan</button>
+            </form>
+            <p class="newsletter-hint">Kami tidak akan spam. Bisa berhenti kapan saja.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">NEXUS</div>
+        <p>© 2024 NEXUS. All rights reserved.</p>
+    </footer>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+    <script src="pages.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initParticles();
+            initThemeToggle();
+            initBlogPage();
+        });
+    </script>
+</body>
+</html>

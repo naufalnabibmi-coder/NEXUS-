@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#00f0ff">
+    <title>Dashboard - NEXUS</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="features.css">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <nav>
+        <a href="index.html" class="logo">NEXUS</a>
+
+        <!-- SEARCH GLOBAL (F) -->
+        <div class="search-bar" id="searchBar">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Cari project, pesan, atau user..." autocomplete="off">
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+
+        <!-- NOTIFIKASI (B) -->
+        <div class="notif-wrapper">
+            <button class="notif-btn" id="notifBtn" title="Notifikasi">
+                🔔
+                <span class="notif-badge" id="notifBadge">3</span>
+            </button>
+            <div class="notif-dropdown" id="notifDropdown">
+                <div class="notif-header">
+                    <strong>Notifikasi</strong>
+                    <button id="markAllRead" class="link-btn">Tandai semua</button>
+                </div>
+                <div class="notif-list" id="notifList"></div>
+            </div>
+        </div>
+
+        <!-- LANGUAGE (C) -->
+        <button class="lang-toggle" id="langToggle" title="Ganti bahasa">🌐 ID</button>
+
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+    </nav>
+
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-user">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <h4 id="sidebarName">User</h4>
+                <p id="sidebarEmail">user@email.com</p>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html" class="active" data-i18n="nav.dashboard">📊 Dashboard</a></li>
+                <li><a href="projects.html" data-i18n="nav.projects">📁 Projects</a></li>
+                <li><a href="messages.html" data-i18n="nav.messages">💬 Messages</a></li>
+                <li><a href="profile.html" data-i18n="nav.profile">👤 Profil</a></li>
+                <li><a href="settings.html" data-i18n="nav.settings">⚙️ Settings</a></li>
+            </ul>
+        </aside>
+
+        <main class="app-main">
+            <div class="page-header">
+                <h1 data-i18n="dash.greeting">Halo, <span class="gradient" id="userName">User</span>! 👋</h1>
+                <p data-i18n="dash.subtitle">Selamat datang kembali di dashboard NEXUS Anda.</p>
+            </div>
+
+            <!-- STATS -->
+            <div class="dash-stats">
+                <div class="dash-stat-card">
+                    <div class="icon">📊</div>
+                    <h3>12</h3>
+                    <p data-i18n="stat.projects">Total Projects</p>
+                </div>
+                <div class="dash-stat-card">
+                    <div class="icon">✅</div>
+                    <h3>8</h3>
+                    <p data-i18n="stat.completed">Completed</p>
+                </div>
+                <div class="dash-stat-card">
+                    <div class="icon">💬</div>
+                    <h3>3</h3>
+                    <p data-i18n="stat.messages">New Messages</p>
+                </div>
+                <div class="dash-stat-card">
+                    <div class="icon">⚡</div>
+                    <h3>96%</h3>
+                    <p data-i18n="stat.performance">Performance</p>
+                </div>
+            </div>
+
+            <!-- CHART (A) -->
+            <h2 class="dash-section-title" data-i18n="chart.title">📈 Statistik Aktivitas</h2>
+            <div class="chart-card">
+                <canvas id="activityChart" height="120"></canvas>
+            </div>
+
+            <!-- KALENDER (G) -->
+            <h2 class="dash-section-title" data-i18n="calendar.title">📅 Kalender Aktivitas</h2>
+            <div class="calendar-card">
+                <div class="calendar-header">
+                    <button id="prevMonth">‹</button>
+                    <h3 id="calendarTitle">November 2024</h3>
+                    <button id="nextMonth">›</button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+                <div class="calendar-events" id="calendarEvents">
+                    <p style="color:var(--text-dim);text-align:center;padding:1rem">
+                        Klik tanggal untuk melihat aktivitas
+                    </p>
+                </div>
+            </div>
+
+            <!-- AKSI CEPAT -->
+            <h2 class="dash-section-title" data-i18n="quick.title">⚡ Aksi Cepat</h2>
+            <div class="dash-cards">
+                <div class="dash-card" onclick="location.href='projects.html'">
+                    <div class="icon">🚀</div>
+                    <h3 data-i18n="quick.newProject">Project Baru</h3>
+                    <p data-i18n="quick.newProjectDesc">Mulai project impian Anda</p>
+                </div>
+                <div class="dash-card" onclick="showToast('Fitur segera hadir!')">
+                    <div class="icon">👥</div>
+                    <h3 data-i18n="quick.invite">Undang Tim</h3>
+                    <p data-i18n="quick.inviteDesc">Tambahkan anggota</p>
+                </div>
+                <div class="dash-card" onclick="showToast('Fitur segera hadir!')">
+                    <div class="icon">📝</div>
+                    <h3 data-i18n="quick.note">Buat Catatan</h3>
+                    <p data-i18n="quick.noteDesc">Catat ide Anda</p>
+                </div>
+                <div class="dash-card" onclick="location.href='settings.html'">
+                    <div class="icon">⚙️</div>
+                    <h3 data-i18n="quick.settings">Pengaturan</h3>
+                    <p data-i18n="quick.settingsDesc">Sesuaikan akun</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ONBOARDING TOUR (E) -->
+    <div class="tour-overlay" id="tourOverlay">
+        <div class="tour-box" id="tourBox">
+            <div class="tour-step" id="tourStep">1 / 5</div>
+            <h3 id="tourTitle">Selamat Datang! 👋</h3>
+            <p id="tourText">Ini adalah dashboard Anda. Mari jelajahi fitur-fiturnya.</p>
+            <div class="tour-actions">
+                <button class="btn btn-outline btn-sm" id="tourSkip">Lewati</button>
+                <button class="btn btn-primary btn-sm" id="tourNext">Lanjut →</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- CHART.JS CDN (A) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+    <script src="features.js"></script>
+    <script>
+        // INIT semua
+        document.addEventListener('DOMContentLoaded', () => {
+            initParticles();
+            initThemeToggle();
+            initSidebar();
+            initDashboard();
+            initSearch();
+            initNotifications();
+            initLanguage();
+            initChart();
+            initCalendar();
+            initTour();
+
+            // PWA
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('service-worker.js');
+            }
+        });
+    </script>
+</body>
+</html>

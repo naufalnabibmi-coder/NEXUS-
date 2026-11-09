@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#00f0ff">
+    <title>NEXUS — Digital Experience v2</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="parallax.css">
+</head>
+<body class="parallax-body">
+
+    <!-- LAYER BACKGROUND PARALLAX -->
+    <div class="parallax-layer layer-stars" data-speed="0.1"></div>
+    <div class="parallax-layer layer-glow" data-speed="0.2">
+        <div class="glow-orb glow-orb-1"></div>
+        <div class="glow-orb glow-orb-2"></div>
+        <div class="glow-orb glow-orb-3"></div>
+    </div>
+    <div class="parallax-layer layer-grid" data-speed="0.3"></div>
+
+    <canvas id="particles"></canvas>
+
+    <nav>
+        <a href="index-v2.html" class="logo">NEXUS</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#showcase">Showcase</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Daftar</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="parallax-hero" id="home">
+        <div class="hero-content parallax-content" data-speed="0.5">
+            <div class="hero-badge">✦ NEXUS v2.0 ✦</div>
+            <h1 class="hero-title">
+                <span class="title-line">Build The</span>
+                <span class="title-line gradient">Impossible</span>
+            </h1>
+            <p class="hero-subtitle">
+                Platform digital generasi baru yang mengubah cara Anda berkreasi,
+                berkolaborasi, dan berinovasi di era metaverse.
+            </p>
+            <div class="hero-buttons">
+                <a href="register.html" class="btn btn-primary">Mulai Gratis →</a>
+                <a href="#features" class="btn btn-outline">Jelajahi →</a>
+            </div>
+        </div>
+
+        <div class="scroll-hint">
+            <span>Scroll untuk jelajahi</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- FEATURES dengan parallax cards -->
+    <section class="parallax-section" id="features">
+        <div class="section-content">
+            <div class="section-head">
+                <h2>Fitur <span class="gradient">Luar Biasa</span></h2>
+                <p>Teknologi terdepan untuk pengalaman yang tak terlupakan</p>
+            </div>
+
+            <div class="parallax-cards">
+                <div class="p-card" data-speed="0.15">
+                    <div class="p-card-glow"></div>
+                    <div class="p-icon">⚡</div>
+                    <h3>Ultra Cepat</h3>
+                    <p>Performa kilat dengan teknologi edge computing terbaru.</p>
+                </div>
+                <div class="p-card" data-speed="0.25">
+                    <div class="p-card-glow"></div>
+                    <div class="p-icon">🔒</div>
+                    <h3>Keamanan Maksimal</h3>
+                    <p>Enkripsi end-to-end dengan standar militer.</p>
+                </div>
+                <div class="p-card" data-speed="0.15">
+                    <div class="p-card-glow"></div>
+                    <div class="p-icon">🎨</div>
+                    <h3>Desain Futuristik</h3>
+                    <p>Interface indah dengan animasi halus dan responsif.</p>
+                </div>
+                <div class="p-card" data-speed="0.2">
+                    <div class="p-card-glow"></div>
+                    <div class="p-icon">🌐</div>
+                    <h3>Global Scale</h3>
+                    <p>Infrastruktur di 50+ negara dengan latensi rendah.</p>
+                </div>
+                <div class="p-card" data-speed="0.15">
+                    <div class="p-card-glow"></div>
+                    <div class="p-icon">🤖</div>
+                    <h3>AI Powered</h3>
+                    <p>Ditenagai kecerdasan buatan generasi terbaru.</p>
+                </div>
+                <div class="p-card" data-speed="0.25">
+                    <div class="p-card-glow"></div>
+                    <div class="p-icon">🚀</div>
+                    <h3>Siap Masa Depan</h3>
+                    <p>Arsitektur modular untuk tantangan masa depan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOWCASE -->
+    <section class="parallax-showcase" id="showcase">
+        <div class="showcase-content">
+            <h2>Dibuat untuk <span class="gradient">Kreator</span></h2>
+            <p class="showcase-subtitle">Ribuan kreator telah mempercayakan project mereka pada NEXUS</p>
+
+            <div class="showcase-stats">
+                <div class="showcase-stat">
+                    <div class="stat-num">500+</div>
+                    <div class="stat-txt">Projects</div>
+                </div>
+                <div class="showcase-stat">
+                    <div class="stat-num">120+</div>
+                    <div class="stat-txt">Clients</div>
+                </div>
+                <div class="showcase-stat">
+                    <div class="stat-num">99%</div>
+                    <div class="stat-txt">Satisfaction</div>
+                </div>
+                <div class="showcase-stat">
+                    <div class="stat-num">24/7</div>
+                    <div class="stat-txt">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="parallax-cta">
+        <div class="cta-content">
+            <h2>Siap Memulai <span class="gradient">Petualangan?</span></h2>
+            <p>Bergabunglah dengan ribuan inovator yang telah merasakan pengalaman digital masa depan.</p>
+            <a href="register.html" class="btn btn-primary">Daftar Gratis Sekarang →</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">NEXUS</div>
+        <p>© 2024 NEXUS v2.0 — Crafted with passion & parallax</p>
+    </footer>
+
+    <!-- PWA INSTALL BANNER -->
+    <div class="pwa-banner" id="pwaBanner">
+        <div class="pwa-icon">N</div>
+        <div class="pwa-text">
+            <strong>Install NEXUS</strong>
+            <p>Tambahkan ke home screen untuk akses cepat</p>
+        </div>
+        <div class="pwa-actions">
+            <button class="pwa-install-btn" id="pwaInstall">Install</button>
+            <button class="pwa-close-btn" id="pwaClose">✕</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="parallax.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initParticles();
+            initThemeToggle();
+            initParallax();
+            initPWA();
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(() => console.log('✅ Service Worker registered'))
+                    .catch(err => console.warn('SW error:', err));
+            }
+        });
+    </script>
+</body>
+</html>
